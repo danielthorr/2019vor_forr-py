@@ -55,6 +55,35 @@ def SendFile(_data):
         # Send the file to the client
         conn.sendto(bytes("filename:" + answer + ";content:", "utf8") + file.read(), addr)
 
+mainMenu = ("\t0;This is the initial screen, please select one of the option listed below:"
+            "\n"
+            "\n\t1. Verkefni 01 - Receive file from server"
+            "\n\t2. Verkefni 02 - Receive file, edit locally, then send modified file back"
+            )
+
+def StateManager(data):
+
+    # We declare our state from only the first character from the client.
+    # This will be our state. (See "mainMenu" variable for the other states)
+    state = data[0]
+
+    # We use 0 as a "ready" signal, which means that the client is either ready to begin or ready
+    # to go back to the "main menu"
+    if (state == "0"):
+        print("Client is ready")
+        # Send a simple string to our client which displays the files that can be sent over
+        conn.sendto(bytes(mainMenu, "utf8"), addr)
+
+    if (state == "1"):
+        conn.sendto(bytes("0;Select file:\n\nfile1.txt\nfile2.txt\nfile3.txt", "utf8"), addr)
+
+    # We check to see if the client has sent us it's answer.
+    # The string format from the client is "answer:[filename]" so we check to see if the string contains "answer:"
+    if data[0:7] == "answer:":
+        print("Received answer from client")
+        # Here we send the data variable to our function to check the client's answer and send back a file
+        SendFile(data)
+        print("File sent\n")
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serverSocket:
     # Empty string means that the socket is going to accept any connection
@@ -79,18 +108,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serverSocket:
                 # This break statements breaks our while loop which keeps the connection open
                 break
 
-            # The client sends a ready signal whenever we should "start over" (or begin) and send the file list
-            if data == "ready":
-                print("Client is ready")
-                # Send a simple string to our client which displays the files that can be sent over
-                conn.sendto(bytes("Select file:\n\nfile1.txt\nfile2.txt\nfile3.txt", "utf8"), addr)
-            # We check to see if the client has sent us it's answer.
-            # The string format from the client is "answer:[filename]" so we check to see if the string contains "answer:"
-            if data[0:7] == "answer:":
-                print("Received answer from client")
-                # Here we send the data variable to our function to check the client's answer and send back a file
-                SendFile(data)
-                print("File sent\n")
+            # We send our data through to our "state manager" - which decides what state we are in
+            # In other words, when the clients selects an option to run,
+            # that is the state of our server in relation to the client
+            StateManager(data)
+
 
 
 #   --------    Extra information   --------    #

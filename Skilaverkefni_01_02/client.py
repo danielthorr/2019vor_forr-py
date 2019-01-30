@@ -15,7 +15,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as clientSocket:
     clientSocket.connect((hostName, port))
 
     # Send "ready" to the server so it can send back the file list
-    clientSocket.sendall(b"ready")
+    clientSocket.sendall(b"0")
 
     while True:
         # If we're ready to disconnect, we send the "disconnect" message to the server
@@ -26,12 +26,21 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as clientSocket:
         # Receive data from the server and decode using utf8
         data = clientSocket.recv(1024).decode("utf8")
 
+        state = data.strip("\t")[0]
+        message = data.split(";")[1]
+
         # We check to see what we got from the client.
         # If we got "Select" then we need to select a file
         # If we got "filename" then we got back a file with a filename and we're gonna copy it
-        if data[:6] == "Select":
+        if state == "0":
+            selected = input(message + "\n\nClient choice: ")
+            if not int(selected):
+                print("Your answer was not recognized. Please try again.")
+            else:
+                clientSocket.send(b"1")
+        if state == "1":
             # Get input from the user
-            selected = input(data + "\n\nClient choice: ")
+            selected = input(message + "\n\nClient choice: ")
             # Send our answer back to the server, formatted in a way the server can deconstruct
             clientSocket.send(b"answer:" + bytes(selected, "utf8"))
         if data[0:8] == "filename":
@@ -56,4 +65,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as clientSocket:
                     file.write(content)
                     # When we finish copying the file we send the server another ready message
                     # so we can get the list of filenames again
-                    clientSocket.send(b"ready")
+                    clientSocket.send(b"0")
