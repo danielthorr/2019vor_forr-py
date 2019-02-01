@@ -1,4 +1,1 @@
-This is file2.
-
-Here is some additional flavor text.
-File 2.
+I'm gonna write in this file that it's name is file3.txt. No one will never know which file it REALLY is!

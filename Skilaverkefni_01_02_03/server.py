@@ -25,45 +25,39 @@ mainMenu = ("00;This is the initial screen, please select one of the option list
             "\n"
             "\n\t1. Verkefni 01 - Receive file from server"
             "\n\t2. Verkefni 02 - Receive file, edit locally, then send modified file back"
+            "\n\t3. Verkefni 03 - Play a game of hangman"
             )
 
 
 def StateManager(data):
     # We declare our state from only the first character from the client.
     # This will be our state. (See "mainMenu" variable for the other states)
-    state = data.split(";")[0]
-    message = data.split(";")[1]
+    state = data.split(";")[0][0]
+    substate = data.split(";")[0][1]
+    if len(data) > 3:
+        message = data.split(";")[1]
+    else:
+        message = ""
 
     # We use 0 as a "ready" signal, which means that the client is either ready to begin or ready
     # to go back to the "main menu"
-    if state == "00":
+    if state == "0":
         print("Client is ready")
         # Send a simple string to our client which displays the files that can be sent over
         conn.sendto(bytes(mainMenu, "utf8"), addr)
 
-    if state == "10":
-        conn.sendto(bytes("10;Select file:\n\nfile1.txt\nfile2.txt\nfile3.txt", "utf8"), addr)
+    if state == "1":
+        toSend = ServerMethod.Verkefni1(substate, message)
+        conn.sendto(toSend, addr)
 
-    # We check to see if the client has sent us it's answer.
-    # The string format from the client is "answer:[filename]" so we check to see if the string contains "answer:"
-    if state == "11":
-        print("Received answer from client")
-        file = ServerMethod.SendFile(data)
-        # Here we send the data variable to our function to check the client's answer and send back a file
-        conn.sendto(file, conn)
-        print("File sent\n")
+    if state == "2":
+        toSend = ServerMethod.Verkefni2(substate, message)
+        conn.sendto(toSend, addr)
+        print("justtopause")
 
-    if state == "20":
-        conn.sendto(bytes("20;Please type in a filename to modify", "utf8"), addr)
-
-    if state == "21":
-
-    if state == "30":
-        conn.sendto(bytes("30;", "utf8"), addr)
-
-    if state == "31":
-
-
+    if state == "3":
+        toSend = ServerMethod.Verkefni3(substate, message)
+        conn.sendto(toSend, addr)
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serverSocket:
     # Empty string means that the socket is going to accept any connection
