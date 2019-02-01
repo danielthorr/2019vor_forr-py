@@ -1,4 +1,0 @@
-This is file1.
-
-Here is some additional flavor text.
-File 1.
