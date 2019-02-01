@@ -124,6 +124,13 @@ class Hangman:
 
         self.correctGuesses = 0
 
+    def Reset(self):
+        self.revealed = ""
+        self.wordToScreen = ""
+        self.correctLetters = 0
+        self.guessesLeft = 0
+        self.lettersGuessed = []
+
     def Guess(self, letter):
         if letter in self.lettersGuessed:
             return "\n[You already guessed this letter.]\n---------------------------" + self.WriteToScreen()
@@ -131,13 +138,17 @@ class Hangman:
             if letter not in self.chosenWord:
                 self.guessesLeft -= 1
             else:
-                self.correctLetters += 1
+                for l in self.chosenWord:
+                    if letter == l:
+                        self.correctLetters += 1
             self.lettersGuessed.append(letter)
             self.WordUpdate(letter)
             printout = self.WriteToScreen()
             if self.correctLetters == len(self.chosenWord):
+                self.Reset()
                 return "|WOW YOU WIN! The word was [" + self.chosenWord + "]"
             elif self.guessesLeft <= 0:
+                self.Reset()
                 return "|Oh man, you lost this one. The word was [" + self.chosenWord + "]"
             return printout
         else:
