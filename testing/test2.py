@@ -1,6 +1,12 @@
 # Multi-frame tkinter application v2.3
 import tkinter as tk
+import socket
 from random import randint
+
+hostName = socket.gethostbyname(socket.gethostname())
+
+port = 9999
+
 
 class Hangman(tk.Tk):
     def __init__(self):
@@ -147,7 +153,11 @@ class GameFrame(tk.Frame):
         
         tk.Button(self, text="Return to start page", command=lambda: master.switchFrame(StartFrame)).grid(row=4)
 
+def listenerSocket():
+    print("checking socket...")
 
-if __name__ == "__main__":
-    app = Hangman()
-    app.mainloop()
+    try:
+        
+
+app = Hangman()
+app.mainloop()
