@@ -1,0 +1,79 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CommandError	serverMethods.py	/^  def CommandError(self, inp):$/;"	kind:member	line:138
+East	serverMethods.py	/^  def East(self, inp):$/;"	kind:member	line:65
+GameManager	serverMethods.py	/^class GameManager():$/;"	kind:class	line:11
+GiveHint	serverMethods.py	/^  def GiveHint(self):$/;"	kind:member	line:197
+North	serverMethods.py	/^  def North(self, inp):$/;"	kind:member	line:55
+Output	test.py	/^def Output(text):$/;"	kind:function	line:51
+ParseCommand	serverMethods.py	/^  def ParseCommand(self, inp):$/;"	kind:member	line:148
+ParseInput	clientMethods.py	/^  def ParseInput(self, inp):$/;"	kind:member	line:5
+Player	clientMethods.py	/^class Player():$/;"	kind:class	line:1
+PySimpleGUI	tmp_test.py	/^import PySimpleGUI$/;"	kind:namespace	line:14
+SetTerminalSize	serverMethods.py	/^  def SetTerminalSize(self):$/;"	kind:member	line:7
+South	serverMethods.py	/^  def South(self, inp):$/;"	kind:member	line:87
+Star	serverMethods.py	/^  def Star(self, inp):$/;"	kind:member	line:124
+SuggestWord	serverMethods.py	/^  def SuggestWord(self, word):$/;"	kind:member	line:200
+Suggestions	test.py	/^def Suggestions(uInp, empty=False):$/;"	kind:function	line:24
+TextManager	serverMethods.py	/^class TextManager():$/;"	kind:class	line:1
+Turn	serverMethods.py	/^  def Turn(self, inp, args):$/;"	kind:member	line:29
+West	serverMethods.py	/^  def West(self, inp):$/;"	kind:member	line:97
+__init__	clientMethods.py	/^  def __init__(self):$/;"	kind:member	line:2
+__init__	serverMethods.py	/^  def __init__(self):$/;"	kind:member	line:13
+__init__	serverMethods.py	/^  def __init__(self):$/;"	kind:member	line:3
+background_color	test.py	/^       background_color="Blue", $/;"	kind:variable	line:9
+canv	test.py	/^canv = window.FindElement("canvas").TKCanvas$/;"	kind:variable	line:16
+client.py	client.py	1;"	kind:file	line:1
+clientMethods	client.py	/^import clientMethods$/;"	kind:namespace	line:2
+clientMethods.py	clientMethods.py	1;"	kind:file	line:1
+columnLeft	test.py	/^columnLeft = [[output], [suggest], [psgui.InputText("Type something here", size=(70,1), key="userInput", focus=True )]]$/;"	kind:variable	line:6
+command	server.py	/^      command = data.split(";")[1]$/;"	kind:variable	line:46
+context	server.py	/^        context = data.split(";")[2]$/;"	kind:variable	line:48
+data	client.py	/^    data = clientSocket.recv(1024).decode("utf8")$/;"	kind:variable	line:22
+data	server.py	/^      data = conn.recv(1024).decode("utf8")$/;"	kind:variable	line:37
+deconstruct	client.py	/^    deconstruct = inp.split(" ")$/;"	kind:variable	line:26
+disconnect	client.py	/^        disconnect = True$/;"	kind:variable	line:40
+disconnect	client.py	/^disconnect = False$/;"	kind:variable	line:7
+gm	server.py	/^gm = serverMethods.GameManager()$/;"	kind:variable	line:21
+hostName	client.py	/^hostName = s.gethostbyname(s.gethostname())$/;"	kind:variable	line:4
+hostName	server.py	/^  hostName = s.gethostbyname(s.gethostname())$/;"	kind:variable	line:7
+inp	client.py	/^      inp = "0;%s" % inp$/;"	kind:variable	line:34
+inp	client.py	/^      inp = str(l)$/;"	kind:variable	line:30
+inp	client.py	/^    inp = input(">>> ")$/;"	kind:variable	line:24
+inp	test.py	/^  inp = str.strip(str.lower(values["userInput"]))$/;"	kind:variable	line:61
+inp	test.py	/^inp = ""$/;"	kind:variable	line:47
+intro	server.py	/^intro= ("You open your eyes. 'Where am I?' you think to yourself."$/;"	kind:variable	line:15
+intro	test.py	/^intro= ("You open your eyes. 'Where am I?' you think to yourself. "$/;"	kind:variable	line:18
+key	test.py	/^       key="canvas", $/;"	kind:variable	line:11
+keyWords	test.py	/^keyWords = ["examine", "go", "look", "use", "walk"]$/;"	kind:variable	line:22
+l	client.py	/^    l = len(deconstruct) if isinstance(deconstruct, list) else 1$/;"	kind:variable	line:28
+l	server.py	/^      l = data.split(";")[0]$/;"	kind:variable	line:43
+l	server.py	/^      l = int(l)$/;"	kind:variable	line:44
+lastInp	test.py	/^  lastInp = inp$/;"	kind:variable	line:69
+lastInp	test.py	/^lastInp = ""$/;"	kind:variable	line:48
+layout	test.py	/^layout = [[psgui.Column(columnLeft), map]]$/;"	kind:variable	line:14
+map	test.py	/^map = psgui.Canvas(canvas=None,$/;"	kind:variable	line:8
+os	server.py	/^import os$/;"	kind:namespace	line:2
+output	test.py	/^output = psgui.Multiline("Here is the large text thing", size=(70,20) )$/;"	kind:variable	line:4
+player	client.py	/^  player = clientMethods.Player()$/;"	kind:variable	line:16
+port	client.py	/^port = 9999$/;"	kind:variable	line:5
+port	server.py	/^port = 9999$/;"	kind:variable	line:11
+psgui	test.py	/^import PySimpleGUI as psgui$/;"	kind:namespace	line:1
+re	test.py	/^import re$/;"	kind:namespace	line:2
+s	client.py	/^import socket as s$/;"	kind:namespace	line:1
+s	server.py	/^import socket as s$/;"	kind:namespace	line:4
+server.py	server.py	1;"	kind:file	line:1
+serverMethods	server.py	/^import serverMethods$/;"	kind:namespace	line:3
+serverMethods.py	serverMethods.py	1;"	kind:file	line:1
+size	test.py	/^       size=(200, 300),$/;"	kind:variable	line:10
+suggest	test.py	/^suggest = psgui.Multiline("I might use this for 'autocorrect'", size=(54,1), font=("Arial", 12, "bold"), text_color="green" )$/;"	kind:variable	line:5
+test.py	test.py	1;"	kind:file	line:1
+tmp_test.py	tmp_test.py	1;"	kind:file	line:1
+tooltip	test.py	/^       tooltip="Map")$/;"	kind:variable	line:12
+txt1	test.py	/^txt1 = (intro, "text_color=blue")$/;"	kind:variable	line:49
+window	test.py	/^window = psgui.Window('Test', return_keyboard_events=True, background_color=None, use_default_focus=False,).Layout(layout).Finalize()$/;"	kind:variable	line:15
+wordPairs	test.py	/^wordPairs = { "look": "at", "go": "to", "walk": ["back", "to"] }$/;"	kind:variable	line:23

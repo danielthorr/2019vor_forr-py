@@ -1,0 +1,29 @@
+TODO:
+	parse input and commands
+	have output on the screen
+	autocorrect shows up
+
+MODULE
+	time
+	
+Skoða:
+	dict
+	
+ --------------------
+	
+If you lived in a one story house made only of redwood. What color would the stairs be?
+(Hint: How many stories does the house have?)
+No stairs
+
+ --------------------
+ 
+How many months of the year have 28 days?
+(Hint: In which months could you reach day 28?)
+All of them!
+
+ --------------------
+ 
+What is the average air speed velocity of an unladen swallow?
+(Hint: The answer isn't the actual speed.)
+(Hint 2: This one is tough if you don't know the reference. It depends on if it's an African or European swallow)
+African or European?

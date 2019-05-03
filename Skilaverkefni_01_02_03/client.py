@@ -9,7 +9,7 @@ hostName = socket.gethostbyname(socket.gethostname())
 
 port = 9999
 
-disconnect = False;
+disconnect = False
 
 def SplitStrVerk1(_data):
     # We split the string a few times and extract the necessary parts from it.
