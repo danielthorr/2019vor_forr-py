@@ -49,6 +49,9 @@ with s.socket(s.AF_INET, s.SOCK_STREAM) as clientSocket:
     # otherwise we set it to exit
     inp = input(">>> ") if not disconnect else "exit"
 
+    # Strip whitepspaces from beginning and end and convert to lowercase
+    inp = str.strip(str.lower(inp))
+
     # When we start the game, we clear the screen
     if inp == "start":
       start = True

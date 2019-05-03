@@ -44,7 +44,7 @@ with s.socket(s.AF_INET, s.SOCK_STREAM) as serverSocket:
       data = conn.recv(1024).decode("utf8")
       # If the client sends "00", that means we should skip over it and let the client retry
       # If the client doesn't send "00", we split the data and grab the second item, which is the command
-      command = "00" if data != "00" else data.split(";")[1]
+      command = "00" if data == "00" else data.split(";")[1]
 
       if command == "disconnecting":
         print("Client is disconnecting")

@@ -106,6 +106,7 @@ class GameManager():
           if self.playerItems["candles"]: 
             return "There's a busted up box in here. You took the candles from it."
           else: return "You look inside the box and see 4 candles."
+        elif self.playerFocus == "candles": return "There are 4 candles in the box. They are cylindrical and somewhere between 5 - 10 cm thick."
         else: return "It's a medium sized wooden box. More like a crate, really."
       elif self.progress["box"]: return "You see a wooden box, it's busted open."
       else: return "You see a wooden box, it doesn't look very sturdy"
@@ -117,7 +118,6 @@ class GameManager():
           else: 
             self.progress["box"] = True
             return "You bust open the box with your crowbar"
-        else: return "What do you want to do with the crowbar?"
       elif self.playerFocus in ["box", "candles"]: 
         if self.progress["box"]: 
           if self.playerItems["candles"]: return "The box is empty, you already grabbed the candles."
@@ -204,9 +204,8 @@ class GameManager():
 
     # If the user is trying to interact with either the star or the ring and 
     # if the player has the necessary items
-    if  (self.playerFocus in ["star", "ring"] 
-    or self.useItemWith in ["ring", "circle"]
-    and all(self.playerItems.values())):
+    print(all(self.playerItems.values()))
+    if all(self.playerItems.values()) and (self.useItemWith in ["star", "ring"] or self.playerFocus in ["star", "ring"]):
       dataString = self.Star(inp)
 
     elif inp == "help":
@@ -251,6 +250,6 @@ class GameManager():
                       "\nBefore you know it, you're out partying with your best bro, The Devil.\n\n\t\tThe End.")
       # We pretend the number 00 to the string and the client will parse that as end-game and disconnect
       dataString = "00;"+dataString
-      
+
     # Finally we return the string to the server, so it can be sent to the client
     return dataString
